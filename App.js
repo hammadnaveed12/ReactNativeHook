@@ -6,13 +6,32 @@ import Login from './Login';
 import Home from './Home';
 import Languages from "./Languages"
 import CoffeeList from './CoffeeList';
+import { useEffect, useState } from "react";
+import  AsyncStorage  from "@react-native-async-storage/async-storage";
 
 export default function App(prop) {
 
+  const [isLogged,setIsLogged] = useState(false)
   const Stack = createNativeStackNavigator();
+  _retrieveData=async ()=>{
+    try {
+      const value = await AsyncStorage.getItem("isloggedin")
+      console.log(value)
+      setIsLogged(value)
+    } catch (error) {
+      
+    }
+    
+  }
+  useEffect(()=>{
+    _retrieveData()
+    },[])
+  
+  
   
   return (
-    <NavigationContainer>
+    
+    isLogged?<NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name="Login" component={Login}></Stack.Screen>
                 <Stack.Screen name="Home" component={Home}></Stack.Screen>
@@ -21,7 +40,21 @@ export default function App(prop) {
                 
                
             </Stack.Navigator>
-        </NavigationContainer>
+        </NavigationContainer> 
+        :
+        <NavigationContainer>
+            <Stack.Navigator>
+                
+                <Stack.Screen name="Home" component={Home}></Stack.Screen>
+                <Stack.Screen name="Login" component={Login}></Stack.Screen>
+                <Stack.Screen name="Languages" component={Languages}></Stack.Screen>
+                <Stack.Screen name="CoffeeList" component={CoffeeList}></Stack.Screen>
+               
+               
+            </Stack.Navigator>
+        </NavigationContainer> 
+        
+
   );
 }
 

@@ -1,6 +1,7 @@
 import useApi from "./ApiHook";
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Button,FlatList,ScrollView } from 'react-native';
 import { useEffect } from "react";
+import { AsyncStorage } from 'react-native';
 
 
 export default function Languages(){

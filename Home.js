@@ -1,9 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
-
+import  AsyncStorage  from "@react-native-async-storage/async-storage";
+import { useEffect } from "react";
 export default function Home({navigation}) {
 
-  
+    logout=async () => {
+        try {
+            await AsyncStorage.setItem("isloggedin",false);
+        
+        } catch (error) {
+            
+        }
+        navigation.navigate("Login")
+    }
+       
+        
+        
+    
+    
+    
   
   return (
     <View>
@@ -23,8 +38,7 @@ export default function Home({navigation}) {
       </TouchableOpacity>
       <TouchableOpacity style={styles.loginBtn}
       
-      onPress={() =>
-        navigation.navigate('Login')}>
+      onPress={()=> logout()}>
         <Text style={styles.loginText}>Logout</Text>
 
       </TouchableOpacity>

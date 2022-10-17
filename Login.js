@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -9,10 +9,25 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
- 
+
+import  AsyncStorage  from "@react-native-async-storage/async-storage";
 export default function Login({navigation}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  _storeData = async () => {
+    try {
+      await AsyncStorage.setItem(
+        'isloggedin',
+        true
+      );
+    } catch (error) {
+      // Error saving data
+    }
+  };
+  useEffect(()=>{
+_storeData()
+},[])
  
   return (
     <View style={styles.container}>
