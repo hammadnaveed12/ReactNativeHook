@@ -11,7 +11,7 @@ export default function Home({navigation}) {
         } catch (error) {
             
         }
-        navigation.navigate("Login")
+         navigation.navigate("Login")
     }
        
         
@@ -26,6 +26,13 @@ export default function Home({navigation}) {
       
       onPress={() =>
         navigation.navigate('Languages')}>
+        <Text style={styles.loginText}>Users</Text>
+
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.loginBtn}
+      
+      onPress={() =>
+        navigation.navigate('UsersList')}>
         <Text style={styles.loginText}>Users</Text>
 
       </TouchableOpacity>

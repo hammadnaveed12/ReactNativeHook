@@ -6,6 +6,9 @@ import Login from './Login';
 import Home from './Home';
 import Languages from "./Languages"
 import CoffeeList from './CoffeeList';
+import UsersList from './UsersList'
+import CreateUserScreen from "./CreateUserScreen";
+import UserDetailScreen from "./UserDetailScreen";
 import { useEffect, useState } from "react";
 import  AsyncStorage  from "@react-native-async-storage/async-storage";
 
@@ -31,13 +34,27 @@ export default function App(prop) {
   
   return (
     
-    isLogged?<NavigationContainer>
+    isLogged=="false"?<NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name="Login" component={Login}></Stack.Screen>
                 <Stack.Screen name="Home" component={Home}></Stack.Screen>
                 <Stack.Screen name="Languages" component={Languages}></Stack.Screen>
                 <Stack.Screen name="CoffeeList" component={CoffeeList}></Stack.Screen>
-                
+                <Stack.Screen
+        name="UsersList"
+        component={UsersList}
+        options={{ title: "Users List" }}
+      />
+      <Stack.Screen
+        name="CreateUserScreen"
+        component={CreateUserScreen}
+        options={{ title: "Create a New User" }}
+      />
+      <Stack.Screen
+        name="UserDetailScreen"
+        component={UserDetailScreen}
+        options={{ title: "User Detail" }}
+      />
                
             </Stack.Navigator>
         </NavigationContainer> 
@@ -49,7 +66,21 @@ export default function App(prop) {
                 <Stack.Screen name="Login" component={Login}></Stack.Screen>
                 <Stack.Screen name="Languages" component={Languages}></Stack.Screen>
                 <Stack.Screen name="CoffeeList" component={CoffeeList}></Stack.Screen>
-               
+                <Stack.Screen
+        name="UsersList"
+        component={UsersList}
+        options={{ title: "Users List" }}
+      />
+      <Stack.Screen
+        name="CreateUserScreen"
+        component={CreateUserScreen}
+        options={{ title: "Create a New User" }}
+      />
+      <Stack.Screen
+        name="UserDetailScreen"
+        component={UserDetailScreen}
+        options={{ title: "User Detail" }}
+      />
                
             </Stack.Navigator>
         </NavigationContainer> 
